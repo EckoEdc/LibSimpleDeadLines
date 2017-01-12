@@ -28,4 +28,30 @@ public class TasksService {
             fatalError(error.localizedDescription)
         }
     }
+    
+    public func getNewTask() -> Task {
+        return Task.create()
+    }
+    
+    public func deleteTask(task: Task) {
+        task.delete()
+        AERecord.save()
+    }
+    
+    public func save() {
+        AERecord.save()
+    }
+    
+    public func getTasks() -> [Task] {
+        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+        
+        let fetchedTasks = AERecord.execute(fetchRequest: fetchRequest)
+        return fetchedTasks
+    }
+    
+    public func getFetchedResultsController() -> NSFetchedResultsController<Task> {
+        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        return NSFetchedResultsController<Task>(fetchRequest: fetchRequest, managedObjectContext: AERecord.Context.default, sectionNameKeyPath: nil, cacheName: nil)
+    }
 }
