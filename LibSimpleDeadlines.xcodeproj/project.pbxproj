@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		04BFEBDC1E27D68D0020F4B6 /* LibSimpleDeadlines.h in Headers */ = {isa = PBXBuildFile; fileRef = 04BFEBDA1E27D68D0020F4B6 /* LibSimpleDeadlines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04BFEBE61E27D9280020F4B6 /* TasksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BFEBE51E27D9280020F4B6 /* TasksService.swift */; };
+		04BFEBE91E27DA160020F4B6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BFEBE81E27DA160020F4B6 /* CoreData.framework */; };
+		04BFEBEC1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04BFEBEA1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04BFEBD71E27D68D0020F4B6 /* LibSimpleDeadlines.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibSimpleDeadlines.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BFEBDA1E27D68D0020F4B6 /* LibSimpleDeadlines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibSimpleDeadlines.h; sourceTree = "<group>"; };
 		04BFEBDB1E27D68D0020F4B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04BFEBE51E27D9280020F4B6 /* TasksService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksService.swift; sourceTree = "<group>"; };
+		04BFEBE81E27DA160020F4B6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		04BFEBEB1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleDeadlinesModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04BFEBE91E27DA160020F4B6 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,6 +39,7 @@
 			children = (
 				04BFEBD91E27D68D0020F4B6 /* LibSimpleDeadlines */,
 				04BFEBD81E27D68D0020F4B6 /* Products */,
+				04BFEBE71E27DA150020F4B6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -48,8 +56,18 @@
 			children = (
 				04BFEBDA1E27D68D0020F4B6 /* LibSimpleDeadlines.h */,
 				04BFEBDB1E27D68D0020F4B6 /* Info.plist */,
+				04BFEBE51E27D9280020F4B6 /* TasksService.swift */,
+				04BFEBEA1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodeld */,
 			);
 			path = LibSimpleDeadlines;
+			sourceTree = "<group>";
+		};
+		04BFEBE71E27DA150020F4B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04BFEBE81E27DA160020F4B6 /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +114,7 @@
 					04BFEBD61E27D68D0020F4B6 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = Y7US3C769A;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -132,6 +151,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04BFEBE61E27D9280020F4B6 /* TasksService.swift in Sources */,
+				04BFEBEC1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +262,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Y7US3C769A;
@@ -253,6 +275,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.auroralab.LibSimpleDeadlines;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -261,6 +284,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Y7US3C769A;
@@ -299,6 +323,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		04BFEBEA1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				04BFEBEB1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodel */,
+			);
+			currentVersion = 04BFEBEB1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodel */;
+			path = SimpleDeadlinesModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 04BFEBCE1E27D68D0020F4B6 /* Project object */;
 }
