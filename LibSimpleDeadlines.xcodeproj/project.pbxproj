@@ -11,6 +11,7 @@
 		04BFEBE61E27D9280020F4B6 /* TasksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BFEBE51E27D9280020F4B6 /* TasksService.swift */; };
 		04BFEBE91E27DA160020F4B6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BFEBE81E27DA160020F4B6 /* CoreData.framework */; };
 		04BFEBEC1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04BFEBEA1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodeld */; };
+		04BFEBEE1E27DC130020F4B6 /* AERecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BFEBED1E27DC130020F4B6 /* AERecord.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		04BFEBE51E27D9280020F4B6 /* TasksService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksService.swift; sourceTree = "<group>"; };
 		04BFEBE81E27DA160020F4B6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		04BFEBEB1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleDeadlinesModel.xcdatamodel; sourceTree = "<group>"; };
+		04BFEBED1E27DC130020F4B6 /* AERecord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AERecord.framework; path = Carthage/Build/iOS/AERecord.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04BFEBEE1E27DC130020F4B6 /* AERecord.framework in Frameworks */,
 				04BFEBE91E27DA160020F4B6 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,6 +68,7 @@
 		04BFEBE71E27DA150020F4B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04BFEBED1E27DC130020F4B6 /* AERecord.framework */,
 				04BFEBE81E27DA160020F4B6 /* CoreData.framework */,
 			);
 			name = Frameworks;
@@ -92,6 +96,7 @@
 				04BFEBD31E27D68D0020F4B6 /* Frameworks */,
 				04BFEBD41E27D68D0020F4B6 /* Headers */,
 				04BFEBD51E27D68D0020F4B6 /* Resources */,
+				04BFEBEF1E27DC1B0020F4B6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -145,6 +150,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04BFEBEF1E27DC1B0020F4B6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/AERecord.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		04BFEBD21E27D68D0020F4B6 /* Sources */ = {
@@ -269,6 +291,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LibSimpleDeadlines/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -291,6 +317,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LibSimpleDeadlines/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

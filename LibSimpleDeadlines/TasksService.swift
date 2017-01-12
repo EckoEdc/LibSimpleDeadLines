@@ -7,7 +7,12 @@
 //
 
 import Foundation
+import AERecord
 
 public class TasksService {
     public static var sharedInstance = TasksService()
+    
+    init() {
+        
+    }
 }
