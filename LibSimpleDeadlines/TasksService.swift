@@ -9,6 +9,44 @@
 import Foundation
 import AERecord
 
+extension Task {
+    
+    public func getCircleColor(remainingDays: Int? = nil) -> UIColor {
+        var remain = 0
+        if remainingDays == nil {
+            remain = getDaysBeforeEnd()
+        } else {
+            remain = remainingDays!
+        }
+        switch remain {
+        case Int.min..<3:
+            return UIColor.red
+        case 3..<8:
+            return UIColor.orange
+        case 8..<16:
+            return UIColor.green
+        default:
+            return UIColor.blue
+        }
+    }
+    
+    public func getDaysBeforeEnd() -> Int {
+        let now = Date()
+
+        let remainingDays = NSCalendar.current.dateComponents(
+            [Calendar.Component.day],
+            from: now,
+            to: date as! Date)
+        return remainingDays.day! + 1
+    }
+    
+    public func getRemainingDaysAndColor() -> (Int, UIColor) {
+        let remainingDays = getDaysBeforeEnd()
+        let color = getCircleColor(remainingDays: remainingDays)
+        return (remainingDays, color)
+    }
+}
+
 public class TasksService {
     
     public static var sharedInstance = TasksService()
@@ -26,6 +64,11 @@ public class TasksService {
     
     public func getNewTask() -> Task {
         return Task.create()
+    }
+    
+    public func markAsDone(task: Task) {
+        task.isDone = !task.isDone
+        AERecord.save()
     }
     
     public func deleteTask(task: Task) {
