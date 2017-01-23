@@ -80,6 +80,14 @@ public class TasksService {
         AERecord.save()
     }
     
+    public func getCategory(name: String) -> TaskCategory {
+        return TaskCategory.firstOrCreate(with: ["name" : name])
+    }
+    
+    public func getAllCategory() -> [TaskCategory]? {
+        return TaskCategory.all()
+    }
+    
     public func getTasks() -> [Task] {
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
         
