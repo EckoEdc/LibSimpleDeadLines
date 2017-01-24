@@ -32,6 +32,8 @@ extension Task {
     }
     
     public func getDaysBeforeEnd() -> Int {
+        guard date != nil else {return 0}
+        
         let now = Date()
         let today = now.dateAtStartOfDay()
 
