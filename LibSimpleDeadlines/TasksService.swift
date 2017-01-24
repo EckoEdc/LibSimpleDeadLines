@@ -87,9 +87,10 @@ public class TasksService {
     
     init() {
         let model: NSManagedObjectModel = AERecord.modelFromBundle(for: TasksService.self)
-        print(model)
-        let storeURL = AERecord.storeURL(for: "SimpleDeadlinesModel")
-        print(storeURL)
+        let containerURL = FileManager().containerURL(forSecurityApplicationGroupIdentifier: "group.org.auroralab.Simple-Deadlines")
+        let storeURL = containerURL!.appendingPathComponent("db.sqlite")
+        
+        
         let options = [NSMigratePersistentStoresAutomaticallyOption : true, NSInferMappingModelAutomaticallyOption: true]
         do {
             try AERecord.loadCoreDataStack(managedObjectModel: model, storeURL: storeURL, options: options)
