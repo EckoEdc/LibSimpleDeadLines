@@ -12,19 +12,49 @@ import DateHelper
 
 extension Task {
     
-    public func getCircleColor(remainingDays: Int? = nil) -> UIColor {
+    public enum State {
+        case TODAY
+        case URGENT
+        case WORRYING
+        case NICE
+        case NEVERMIND
+    }
+    
+    
+    public func getStatus(remainingDays: Int? = nil) -> State {
+        
         var remain = 0
         if remainingDays == nil {
             remain = getDaysBeforeEnd()
         } else {
             remain = remainingDays!
         }
+        
         switch remain {
-        case Int.min..<3:
+        case Int.min...1:
+            return .TODAY
+        case 2...3:
+            return .URGENT
+        case 4...7:
+            return .WORRYING
+        case 8...15:
+            return .NICE
+        default:
+            return .NEVERMIND
+        }
+    }
+    
+    public func getCircleColor(remainingDays: Int? = nil) -> UIColor {
+        
+        let status = getStatus(remainingDays: remainingDays)
+        switch status {
+        case.TODAY:
             return UIColor.red
-        case 3..<8:
+        case .URGENT:
             return UIColor.orange
-        case 8..<16:
+        case .WORRYING:
+            return UIColor.yellow
+        case .NICE:
             return UIColor.green
         default:
             return UIColor.blue
@@ -57,7 +87,9 @@ public class TasksService {
     
     init() {
         let model: NSManagedObjectModel = AERecord.modelFromBundle(for: TasksService.self)
+        print(model)
         let storeURL = AERecord.storeURL(for: "SimpleDeadlinesModel")
+        print(storeURL)
         let options = [NSMigratePersistentStoresAutomaticallyOption : true, NSInferMappingModelAutomaticallyOption: true]
         do {
             try AERecord.loadCoreDataStack(managedObjectModel: model, storeURL: storeURL, options: options)
@@ -97,9 +129,11 @@ public class TasksService {
         return TaskCategory.all()
     }
     
-    public func getTasks() -> [Task] {
+    public func getTasks(undoneOnly: Bool = false) -> [Task] {
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-        
+//        if undoneOnly {
+//            fetchRequest.predicate = NSPredicate(format: "isDone == false")
+//        }
         let fetchedTasks = AERecord.execute(fetchRequest: fetchRequest)
         return fetchedTasks
     }
