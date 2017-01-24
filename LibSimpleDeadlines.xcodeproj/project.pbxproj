@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040F10231E378F460016C666 /* DateHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040F10221E378F460016C666 /* DateHelper.framework */; };
 		04BFEBDC1E27D68D0020F4B6 /* LibSimpleDeadlines.h in Headers */ = {isa = PBXBuildFile; fileRef = 04BFEBDA1E27D68D0020F4B6 /* LibSimpleDeadlines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04BFEBE61E27D9280020F4B6 /* TasksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BFEBE51E27D9280020F4B6 /* TasksService.swift */; };
 		04BFEBE91E27DA160020F4B6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BFEBE81E27DA160020F4B6 /* CoreData.framework */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040F10221E378F460016C666 /* DateHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DateHelper.framework; path = Carthage/Build/iOS/DateHelper.framework; sourceTree = "<group>"; };
 		04BFEBD71E27D68D0020F4B6 /* LibSimpleDeadlines.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibSimpleDeadlines.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BFEBDA1E27D68D0020F4B6 /* LibSimpleDeadlines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibSimpleDeadlines.h; sourceTree = "<group>"; };
 		04BFEBDB1E27D68D0020F4B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040F10231E378F460016C666 /* DateHelper.framework in Frameworks */,
 				04BFEBEE1E27DC130020F4B6 /* AERecord.framework in Frameworks */,
 				04BFEBE91E27DA160020F4B6 /* CoreData.framework in Frameworks */,
 			);
@@ -68,6 +71,7 @@
 		04BFEBE71E27DA150020F4B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				040F10221E378F460016C666 /* DateHelper.framework */,
 				04BFEBED1E27DC130020F4B6 /* AERecord.framework */,
 				04BFEBE81E27DA160020F4B6 /* CoreData.framework */,
 			);
@@ -159,6 +163,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/AERecord.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DateHelper.framework",
 			);
 			outputPaths = (
 			);
