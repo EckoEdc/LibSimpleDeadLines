@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		040F10401E37B0BB0016C666 /* CircleCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F103F1E37B0BB0016C666 /* CircleCounterView.swift */; };
 		040F104E1E37C8140016C666 /* DateHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040F10221E378F460016C666 /* DateHelper.framework */; };
+		040F10621E37D7390016C666 /* CircleCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F10611E37D7390016C666 /* CircleCounterView.swift */; };
 		04BFEBDC1E27D68D0020F4B6 /* LibSimpleDeadlines.h in Headers */ = {isa = PBXBuildFile; fileRef = 04BFEBDA1E27D68D0020F4B6 /* LibSimpleDeadlines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04BFEBE61E27D9280020F4B6 /* TasksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BFEBE51E27D9280020F4B6 /* TasksService.swift */; };
 		04BFEBE91E27DA160020F4B6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BFEBE81E27DA160020F4B6 /* CoreData.framework */; };
@@ -18,7 +18,7 @@
 
 /* Begin PBXFileReference section */
 		040F10221E378F460016C666 /* DateHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DateHelper.framework; path = Carthage/Build/iOS/DateHelper.framework; sourceTree = "<group>"; };
-		040F103F1E37B0BB0016C666 /* CircleCounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleCounterView.swift; path = "../../Simple Deadlines/Simple Deadlines/CircleCounterView.swift"; sourceTree = "<group>"; };
+		040F10611E37D7390016C666 /* CircleCounterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCounterView.swift; sourceTree = "<group>"; };
 		04BFEBD71E27D68D0020F4B6 /* LibSimpleDeadlines.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibSimpleDeadlines.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BFEBDA1E27D68D0020F4B6 /* LibSimpleDeadlines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibSimpleDeadlines.h; sourceTree = "<group>"; };
 		04BFEBDB1E27D68D0020F4B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		040F10441E37B2D10016C666 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				040F103F1E37B0BB0016C666 /* CircleCounterView.swift */,
+				040F10611E37D7390016C666 /* CircleCounterView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -198,7 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04BFEBE61E27D9280020F4B6 /* TasksService.swift in Sources */,
-				040F10401E37B0BB0016C666 /* CircleCounterView.swift in Sources */,
+				040F10621E37D7390016C666 /* CircleCounterView.swift in Sources */,
 				04BFEBEC1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
