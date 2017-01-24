@@ -132,9 +132,9 @@ public class TasksService {
     
     public func getTasks(undoneOnly: Bool = false) -> [Task] {
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-//        if undoneOnly {
-//            fetchRequest.predicate = NSPredicate(format: "isDone == false")
-//        }
+        if undoneOnly {
+            fetchRequest.predicate = NSPredicate(format: "isDone == false")
+        }
         let fetchedTasks = AERecord.execute(fetchRequest: fetchRequest)
         return fetchedTasks
     }
