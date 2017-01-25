@@ -90,7 +90,6 @@ public class TasksService {
         let containerURL = FileManager().containerURL(forSecurityApplicationGroupIdentifier: "group.org.auroralab.Simple-Deadlines")
         let storeURL = containerURL!.appendingPathComponent("db.sqlite")
         
-        
         let options = [NSMigratePersistentStoresAutomaticallyOption : true, NSInferMappingModelAutomaticallyOption: true]
         do {
             try AERecord.loadCoreDataStack(managedObjectModel: model, storeURL: storeURL, options: options)
@@ -139,10 +138,17 @@ public class TasksService {
         return fetchedTasks
     }
     
-    public func getFetchedResultsController() -> NSFetchedResultsController<Task> {
+    public func getFetchedResultsController(urgentOnly: Bool = false) -> NSFetchedResultsController<Task> {
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
-        fetchRequest.predicate = getPredicate()
+        if urgentOnly {
+            let now = Date()
+            let threeDays = now.dateAtStartOfDay().dateByAddingDays(3).dateAtEndOfDay()
+            fetchRequest.predicate = NSPredicate(format: "date <= %@ AND doneDate == nil",
+                        threeDays as NSDate)
+        } else {
+            fetchRequest.predicate = getPredicate()
+        }
         return NSFetchedResultsController<Task>(fetchRequest: fetchRequest, managedObjectContext: AERecord.Context.default, sectionNameKeyPath: nil, cacheName: nil)
     }
     
@@ -160,18 +166,18 @@ public class TasksService {
     
     func getPredicate(categoryName: String? = nil) -> NSPredicate {
         let now = Date()
-        let today = now.dateAtStartOfDay()
-        let tomorrow = today.dateByAddingDays(1)
+        let todayStart = now.dateAtStartOfDay()
+        let todayEnd = todayStart.dateAtEndOfDay()
         if let categoryName = categoryName {
             return NSPredicate(format: "(doneDate >= %@ AND doneDate <= %@ AND category.name == %@) OR (doneDate == nil AND category.name == %@)"
-                , today as NSDate,
-                  tomorrow as NSDate,
+                , todayStart as NSDate,
+                  todayEnd as NSDate,
                   categoryName,
                   categoryName)
         } else {
             return NSPredicate(format: "(doneDate >= %@ AND doneDate <= %@) OR doneDate == nil",
-                               today as NSDate,
-                               tomorrow as NSDate)
+                               todayStart as NSDate,
+                               todayEnd as NSDate)
         }
     }
 }
