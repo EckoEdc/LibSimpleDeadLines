@@ -144,14 +144,19 @@ public class TasksService {
         return TaskCategory.all()
     }
     
-    public func getTasks(undoneOnly: Bool = false) -> [Task] {
-        let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+    public func getTasks(undoneOnly: Bool = false, category: String? = nil) -> [Task] {
+        var attributes: [AnyHashable: Any] = [:]
         if undoneOnly {
-            fetchRequest.predicate = NSPredicate(format: "isDone == false")
+            attributes["isDone"] = false
         }
-        let fetchedTasks = AERecord.execute(fetchRequest: fetchRequest)
-        return fetchedTasks
+        if let category = category, category != "All" {
+            attributes["category.name"] = category
+        }
+        if let response = Task.all(with: attributes, predicateType: .and, orderedBy: [NSSortDescriptor(key: "date", ascending: true)]) as? [Task] {
+            return response
+        } else {
+            return []
+        }
     }
     
     public func getFetchedResultsController(urgentOnly: Bool = false) -> NSFetchedResultsController<Task> {
@@ -177,8 +182,6 @@ public class TasksService {
             print("ERROR")
         }
     }
-    
-    // MARK: Private func
     
     func getPredicate(categoryName: String? = nil) -> NSPredicate {
         let now = Date()
