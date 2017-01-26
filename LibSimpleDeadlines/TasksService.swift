@@ -79,6 +79,12 @@ extension Task {
         let color = getCircleColor(remainingDays: remainingDays)
         return (remainingDays, color)
     }
+    
+    public func toSimpleMessage() -> [String: Any] {
+        let daysLeft = getDaysBeforeEnd()
+        let colorData = NSKeyedArchiver.archivedData(withRootObject: self.getCircleColor(remainingDays: daysLeft))
+        return ["title": self.title, "category" : category?.name ?? "", "color": colorData, "daysLeft": String(daysLeft), "id" : self.objectID.uriRepresentation().absoluteString]
+    }
 }
 
 public class TasksService {
@@ -112,6 +118,15 @@ public class TasksService {
         AERecord.save()
     }
     
+    public func markAsDone(objectID: String) {
+        let url = URL(string: objectID)
+        if let nsObjId = AERecord.storeCoordinator?.managedObjectID(forURIRepresentation: url!) {
+            if let task = AERecord.Context.main.object(with: nsObjId) as? Task{
+                markAsDone(task: task)
+            }
+        }
+    }
+    
     public func deleteTask(task: Task) {
         task.delete()
         AERecord.save()
@@ -131,6 +146,7 @@ public class TasksService {
     
     public func getTasks(undoneOnly: Bool = false) -> [Task] {
         let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         if undoneOnly {
             fetchRequest.predicate = NSPredicate(format: "isDone == false")
         }
