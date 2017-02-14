@@ -13,7 +13,3 @@ FOUNDATION_EXPORT double LibSimpleDeadlinesVersionNumber;
 
 //! Project version string for LibSimpleDeadlines.
 FOUNDATION_EXPORT const unsigned char LibSimpleDeadlinesVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <LibSimpleDeadlines/PublicHeader.h>
-
-
