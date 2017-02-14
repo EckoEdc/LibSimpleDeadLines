@@ -11,8 +11,8 @@ import UIKit
 @IBDesignable
 public class CircleCounterView: UIView {
     
+    // MARK: - Properties
     let circleLayer = CAShapeLayer()
-    
     let dayLabel = UILabel()
     
     @IBInspectable public var dayRemaining: Int = 0 {
@@ -27,6 +27,8 @@ public class CircleCounterView: UIView {
         }
     }
     
+    // MARK: - Init func
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -36,6 +38,8 @@ public class CircleCounterView: UIView {
         self.isOpaque = false
         self.backgroundColor = .clear
     }
+    
+    // MARK: - Draw Func
     
     public override func draw(_ frame: CGRect) {
         drawCircle()

@@ -14,6 +14,7 @@
 		04BFEBE91E27DA160020F4B6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BFEBE81E27DA160020F4B6 /* CoreData.framework */; };
 		04BFEBEC1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04BFEBEA1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodeld */; };
 		04BFEBEE1E27DC130020F4B6 /* AERecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BFEBED1E27DC130020F4B6 /* AERecord.framework */; };
+		04F13AF81E5350B00018CDBE /* TaskExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F13AF71E5350B00018CDBE /* TaskExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		04BFEBE81E27DA160020F4B6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		04BFEBEB1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleDeadlinesModel.xcdatamodel; sourceTree = "<group>"; };
 		04BFEBED1E27DC130020F4B6 /* AERecord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AERecord.framework; path = Carthage/Build/iOS/AERecord.framework; sourceTree = "<group>"; };
+		04F13AF71E5350B00018CDBE /* TaskExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 		04BFEBD91E27D68D0020F4B6 /* LibSimpleDeadlines */ = {
 			isa = PBXGroup;
 			children = (
+				04F13AF91E5350B70018CDBE /* Model */,
 				04BFEBDA1E27D68D0020F4B6 /* LibSimpleDeadlines.h */,
 				04BFEBDB1E27D68D0020F4B6 /* Info.plist */,
 				040F10431E37B2C40016C666 /* Service */,
@@ -95,6 +98,14 @@
 				04BFEBE81E27DA160020F4B6 /* CoreData.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		04F13AF91E5350B70018CDBE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04F13AF71E5350B00018CDBE /* TaskExtension.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +210,7 @@
 			files = (
 				04BFEBE61E27D9280020F4B6 /* TasksService.swift in Sources */,
 				040F10621E37D7390016C666 /* CircleCounterView.swift in Sources */,
+				04F13AF81E5350B00018CDBE /* TaskExtension.swift in Sources */,
 				04BFEBEC1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
