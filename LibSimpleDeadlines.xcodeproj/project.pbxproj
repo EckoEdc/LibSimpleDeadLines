@@ -152,7 +152,7 @@
 				TargetAttributes = {
 					04BFEBD61E27D68D0020F4B6 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = Y7US3C769A;
+						DevelopmentTeam = C9DZF63XTA;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -324,7 +324,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Y7US3C769A;
+				DEVELOPMENT_TEAM = C9DZF63XTA;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -350,7 +350,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = Y7US3C769A;
+				DEVELOPMENT_TEAM = C9DZF63XTA;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
