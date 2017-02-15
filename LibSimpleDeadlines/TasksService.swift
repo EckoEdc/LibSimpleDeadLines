@@ -17,7 +17,7 @@ public class TasksService {
     
     init() {
         let model: NSManagedObjectModel = AERecord.modelFromBundle(for: TasksService.self)
-        let containerURL = FileManager().containerURL(forSecurityApplicationGroupIdentifier: "group.org.auroralab.Simple-Deadlines")
+        let containerURL = FileManager().containerURL(forSecurityApplicationGroupIdentifier: "group.org.auroralab.Simple-Deadlines-Group")
         let storeURL = containerURL!.appendingPathComponent("db.sqlite")
         
         let options = [NSMigratePersistentStoresAutomaticallyOption : true, NSInferMappingModelAutomaticallyOption: true]
