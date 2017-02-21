@@ -130,7 +130,6 @@
 				04BFEBD31E27D68D0020F4B6 /* Frameworks */,
 				04BFEBD41E27D68D0020F4B6 /* Headers */,
 				04BFEBD51E27D68D0020F4B6 /* Resources */,
-				04BFEBEF1E27DC1B0020F4B6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -184,24 +183,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		04BFEBEF1E27DC1B0020F4B6 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/AERecord.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/DateHelper.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		04BFEBD21E27D68D0020F4B6 /* Sources */ = {
