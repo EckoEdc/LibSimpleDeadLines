@@ -18,7 +18,6 @@ extension Task {
         case NEVERMIND
     }
     
-    
     public func getStatus(remainingDays: Int? = nil) -> State {
         
         var remain = 0
@@ -47,15 +46,15 @@ extension Task {
         let status = getStatus(remainingDays: remainingDays)
         switch status {
         case.TODAY:
-            return UIColor.red
+            return UIColor(red:0.80, green:0.00, blue:0.00, alpha:1.0)
         case .URGENT:
-            return UIColor.orange
+            return UIColor(red:1.00, green:0.53, blue:0.00, alpha:1.0)
         case .WORRYING:
-            return UIColor.yellow
+            return UIColor(red:0.80, green:0.80, blue:0.00, alpha:1.0)
         case .NICE:
-            return UIColor.green
+            return UIColor(red:0.00, green:0.80, blue:0.00, alpha:1.0)
         default:
-            return UIColor.blue
+            return UIColor(red:0.00, green:0.00, blue:0.80, alpha:1.0)
         }
     }
     
