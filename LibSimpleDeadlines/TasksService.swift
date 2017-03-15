@@ -10,10 +10,15 @@ import Foundation
 import AERecord
 import DateHelper
 
+public protocol TaskEventsDelegate {
+    func onDoneOrDelete(task: Task)
+}
+
 public class TasksService {
     
     // MARK: - Singleton
     public static var sharedInstance = TasksService()
+    public var taskEventsDelegate: TaskEventsDelegate? = nil
     
     init() {
         let model: NSManagedObjectModel = AERecord.modelFromBundle(for: TasksService.self)
@@ -41,6 +46,7 @@ public class TasksService {
         } else {
             task.doneDate = nil
         }
+        taskEventsDelegate?.onDoneOrDelete(task: task)
         AERecord.save()
     }
     
@@ -49,11 +55,13 @@ public class TasksService {
         if let nsObjId = AERecord.storeCoordinator?.managedObjectID(forURIRepresentation: url!) {
             if let task = AERecord.Context.main.object(with: nsObjId) as? Task{
                 markAsDone(task: task)
+                taskEventsDelegate?.onDoneOrDelete(task: task)
             }
         }
     }
     
     public func deleteTask(task: Task) {
+        taskEventsDelegate?.onDoneOrDelete(task: task)
         task.delete()
         AERecord.save()
     }
@@ -68,6 +76,11 @@ public class TasksService {
     
     public func getAllCategory() -> [TaskCategory]? {
         return TaskCategory.all()
+    }
+    
+    public func getNumberOfExpiredTask() -> Int {
+        let now = Date().dateAtStartOfDay()
+        return Task.count(with: NSPredicate(format: "date <= %@ AND doneDate == nil", now as NSDate))
     }
     
     public func getTasks(undoneOnly: Bool = false, category: String? = nil) -> [Task] {
