@@ -11,7 +11,7 @@ import AERecord
 import DateHelper
 
 public protocol TaskEventsDelegate {
-    func onDoneOrDelete(task: Task)
+    func onDoneOrDelete(taskID: String)
 }
 
 public class TasksService {
@@ -46,7 +46,7 @@ public class TasksService {
         } else {
             task.doneDate = nil
         }
-        taskEventsDelegate?.onDoneOrDelete(task: task)
+        taskEventsDelegate?.onDoneOrDelete(taskID: task.title!)
         AERecord.save()
     }
     
@@ -55,13 +55,13 @@ public class TasksService {
         if let nsObjId = AERecord.storeCoordinator?.managedObjectID(forURIRepresentation: url!) {
             if let task = AERecord.Context.main.object(with: nsObjId) as? Task{
                 markAsDone(task: task)
-                taskEventsDelegate?.onDoneOrDelete(task: task)
+                taskEventsDelegate?.onDoneOrDelete(taskID: task.title!)
             }
         }
     }
     
     public func deleteTask(task: Task) {
-        taskEventsDelegate?.onDoneOrDelete(task: task)
+        taskEventsDelegate?.onDoneOrDelete(taskID: task.title!)
         task.delete()
         AERecord.save()
     }
