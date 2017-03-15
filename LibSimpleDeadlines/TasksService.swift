@@ -63,7 +63,7 @@ public class TasksService {
     }
     
     public func getOrCreateCategory(name: String) -> TaskCategory {
-        return TaskCategory.firstOrCreate(with: ["name" : name])
+        return TaskCategory.firstOrCreate(with: ["name" : name.trimmingCharacters(in: .whitespacesAndNewlines)])
     }
     
     public func getAllCategory() -> [TaskCategory]? {
