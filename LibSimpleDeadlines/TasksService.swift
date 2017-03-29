@@ -79,7 +79,7 @@ public class TasksService {
     }
     
     public func getNumberOfExpiredTask() -> Int {
-        let now = Date().dateAtStartOfDay()
+        let now = Date().dateFor(.startOfDay)
         return Task.count(with: NSPredicate(format: "date <= %@ AND doneDate == nil", now as NSDate))
     }
     
@@ -103,7 +103,7 @@ public class TasksService {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         if urgentOnly {
             let now = Date()
-            let threeDays = now.dateAtStartOfDay().dateByAddingDays(3).dateAtEndOfDay()
+            let threeDays = now.dateFor(.startOfDay).adjust(.day, offset: 3).dateFor(.endOfDay)
             fetchRequest.predicate = NSPredicate(format: "date <= %@ AND doneDate == nil",
                         threeDays as NSDate)
         } else {
@@ -126,8 +126,8 @@ public class TasksService {
     
     func getPredicate(categoryName: String? = nil) -> NSPredicate {
         let now = Date()
-        let todayStart = now.dateAtStartOfDay()
-        let todayEnd = todayStart.dateAtEndOfDay()
+        let todayStart = now.dateFor(.startOfDay)
+        let todayEnd = todayStart.dateFor(.endOfDay)
         if let categoryName = categoryName {
             return NSPredicate(format: "(doneDate >= %@ AND doneDate <= %@ AND category.name == %@) OR (doneDate == nil AND category.name == %@)",
                                todayStart as NSDate,

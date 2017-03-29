@@ -63,12 +63,12 @@ extension Task {
         guard date != nil else {return 0}
         
         let now = Date()
-        let today = now.dateAtStartOfDay()
+        let today = now.dateFor(.startOfDay)
         
         let remainingDays = NSCalendar.current.dateComponents(
             [Calendar.Component.day],
             from: today,
-            to: (date as! Date).dateAtStartOfDay())
+            to: (date! as Date).dateFor(.startOfDay))
         return remainingDays.day!
     }
     
@@ -81,6 +81,6 @@ extension Task {
     public func toSimpleMessage() -> [String: Any] {
         let daysLeft = getDaysBeforeEnd()
         let colorData = NSKeyedArchiver.archivedData(withRootObject: self.getCircleColor(remainingDays: daysLeft))
-        return ["title": self.title, "category" : category?.name ?? "", "color": colorData, "daysLeft": String(daysLeft), "id" : self.objectID.uriRepresentation().absoluteString]
+        return ["title": self.title ?? "", "category" : category?.name ?? "", "color": colorData, "daysLeft": String(daysLeft), "id" : self.objectID.uriRepresentation().absoluteString]
     }
 }
