@@ -42,7 +42,7 @@ public class TasksService {
     public func markAsDone(task: Task) {
         task.isDone = !task.isDone
         if task.isDone {
-            task.doneDate = Date() as NSDate
+            task.doneDate = Date()
         } else {
             task.doneDate = nil
         }
