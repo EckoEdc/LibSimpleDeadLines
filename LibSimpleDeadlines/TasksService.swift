@@ -61,7 +61,9 @@ public class TasksService {
     }
     
     public func deleteTask(task: Task) {
-        taskEventsDelegate?.onDoneOrDelete(taskID: task.title!)
+        if let title = task.title {
+            taskEventsDelegate?.onDoneOrDelete(taskID: title)
+        }
         task.delete()
         AERecord.save()
     }
