@@ -10,6 +10,12 @@ import Foundation
 import AERecord
 import DateHelper
 
+public enum CategoryType: String {
+    case all
+    case archive
+    case userDefined
+}
+
 public protocol TaskEventsDelegate {
     func onDoneOrDelete(taskID: String)
 }
@@ -109,13 +115,13 @@ public class TasksService {
             fetchRequest.predicate = NSPredicate(format: "date <= %@ AND doneDate == nil",
                         threeDays as NSDate)
         } else {
-            fetchRequest.predicate = getPredicate()
+            fetchRequest.predicate = getPredicate(categoryType: .all)
         }
         return NSFetchedResultsController<Task>(fetchRequest: fetchRequest, managedObjectContext: AERecord.Context.default, sectionNameKeyPath: nil, cacheName: nil)
     }
     
-    public func filterFetchedResultsByCategory(fetchedResultsController: NSFetchedResultsController<Task>, categoryName: String? = nil) {
-        fetchedResultsController.fetchRequest.predicate = getPredicate(categoryName: categoryName)
+    public func filterFetchedResultsByCategory(fetchedResultsController: NSFetchedResultsController<Task>, categoryType: CategoryType, categoryName: String? = nil) {
+        fetchedResultsController.fetchRequest.predicate = getPredicate(categoryType: categoryType, categoryName: categoryName)
         do {
             try fetchedResultsController.performFetch()
         } catch {
@@ -126,20 +132,30 @@ public class TasksService {
     
     // MARK: Private API
     
-    func getPredicate(categoryName: String? = nil) -> NSPredicate {
+    func getPredicate(categoryType: CategoryType, categoryName: String? = nil) -> NSPredicate {
         let now = Date()
         let todayStart = now.dateFor(.startOfDay)
         let todayEnd = todayStart.dateFor(.endOfDay)
-        if let categoryName = categoryName {
-            return NSPredicate(format: "(doneDate >= %@ AND doneDate <= %@ AND category.name == %@) OR (doneDate == nil AND category.name == %@)",
-                               todayStart as NSDate,
-                               todayEnd as NSDate,
-                               categoryName,
-                               categoryName)
-        } else {
+        
+        switch categoryType {
+        case .all:
             return NSPredicate(format: "(doneDate >= %@ AND doneDate <= %@) OR doneDate == nil",
                                todayStart as NSDate,
                                todayEnd as NSDate)
+        case .archive:
+            return NSPredicate(format: "(doneDate <= %@)",
+                               todayStart as NSDate)
+        case .userDefined:
+            if let categoryName = categoryName {
+                return NSPredicate(format: "(doneDate >= %@ AND doneDate <= %@ AND category.name == %@) OR (doneDate == nil AND category.name == %@)",
+                                   todayStart as NSDate,
+                                   todayEnd as NSDate,
+                                   categoryName,
+                                   categoryName)
+            }
         }
+        return NSPredicate(format: "(doneDate >= %@ AND doneDate <= %@) OR doneDate == nil",
+                           todayStart as NSDate,
+                           todayEnd as NSDate)
     }
 }
