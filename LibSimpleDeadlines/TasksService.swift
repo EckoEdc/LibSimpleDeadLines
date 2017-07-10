@@ -82,7 +82,11 @@ public class TasksService {
         return TaskCategory.firstOrCreate(with: ["name" : name.trimmingCharacters(in: .whitespacesAndNewlines)])
     }
     
-    public func getAllCategory() -> [TaskCategory]? {
+    public func getAllCategory(activeOnly: Bool = true) -> [TaskCategory]? {
+        
+        if activeOnly {
+            return TaskCategory.all(with: NSPredicate(format: "tasks.@count > 0 AND SUBQUERY(tasks, $task, ANY $task.doneDate == nil).@count > 0"))
+        }
         return TaskCategory.all()
     }
     
