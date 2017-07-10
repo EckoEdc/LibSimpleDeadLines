@@ -91,7 +91,7 @@ public class TasksService {
     }
     
     public func getNumberOfExpiredTask() -> Int {
-        let now = Date().dateFor(.startOfDay)
+        let now = Date()
         return Task.count(with: NSPredicate(format: "date <= %@ AND doneDate == nil", now as NSDate))
     }
     
