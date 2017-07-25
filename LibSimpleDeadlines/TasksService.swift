@@ -14,6 +14,14 @@ public enum CategoryType: String {
     case all
     case archive
     case userDefined
+    
+    public var localizedValue : String {
+        switch self {
+        case .all: return NSLocalizedString("All",  comment: "All")
+        case .archive: return NSLocalizedString("Archive",  comment: "Archive")
+        case .userDefined: return ""
+        }
+    }
 }
 
 public protocol TaskEventsDelegate {

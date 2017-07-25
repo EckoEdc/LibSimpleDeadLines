@@ -14,6 +14,7 @@
 		04BFEBE91E27DA160020F4B6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BFEBE81E27DA160020F4B6 /* CoreData.framework */; };
 		04BFEBEC1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04BFEBEA1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodeld */; };
 		04BFEBEE1E27DC130020F4B6 /* AERecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04BFEBED1E27DC130020F4B6 /* AERecord.framework */; };
+		04EBC1211F27F57600EF143C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04EBC1231F27F57600EF143C /* Localizable.strings */; };
 		04F13AF81E5350B00018CDBE /* TaskExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F13AF71E5350B00018CDBE /* TaskExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,8 @@
 		04BFEBE81E27DA160020F4B6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		04BFEBEB1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleDeadlinesModel.xcdatamodel; sourceTree = "<group>"; };
 		04BFEBED1E27DC130020F4B6 /* AERecord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AERecord.framework; path = Carthage/Build/iOS/AERecord.framework; sourceTree = "<group>"; };
+		04EBC1221F27F57600EF143C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		04EBC1241F27F58000EF143C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		04F13AF71E5350B00018CDBE /* TaskExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +89,7 @@
 				040F10431E37B2C40016C666 /* Service */,
 				040F10441E37B2D10016C666 /* Views */,
 				04BFEBEA1E27DA2C0020F4B6 /* SimpleDeadlinesModel.xcdatamodeld */,
+				04EBC1231F27F57600EF143C /* Localizable.strings */,
 			);
 			path = LibSimpleDeadlines;
 			sourceTree = "<group>";
@@ -130,6 +134,7 @@
 				04BFEBD31E27D68D0020F4B6 /* Frameworks */,
 				04BFEBD41E27D68D0020F4B6 /* Headers */,
 				04BFEBD51E27D68D0020F4B6 /* Resources */,
+				04EBC1251F27F61500EF143C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -163,6 +168,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				fr,
 			);
 			mainGroup = 04BFEBCD1E27D68D0020F4B6;
 			productRefGroup = 04BFEBD81E27D68D0020F4B6 /* Products */;
@@ -179,10 +185,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04EBC1211F27F57600EF143C /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04EBC1251F27F61500EF143C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which bartycrouch > /dev/null; then\n# Incrementally update all Storyboards/XIBs strings files\n\n# Add new keys to Localizable.strings files from NSLocalizedString in code\nbartycrouch code -p \"$PROJECT_DIR/LibSimpleDeadlines\" -l \"$PROJECT_DIR\" -a -s\nelse\necho \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		04BFEBD21E27D68D0020F4B6 /* Sources */ = {
@@ -198,11 +221,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		04EBC1231F27F57600EF143C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04EBC1221F27F57600EF143C /* en */,
+				04EBC1241F27F58000EF143C /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		04BFEBDD1E27D68D0020F4B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -256,6 +292,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
